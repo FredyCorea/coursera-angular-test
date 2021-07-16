@@ -1,0 +1,65 @@
+<!doctype html>
+
+<html ng-app='ShoppingListCheckOff' lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>Shopping List Check Off</title>
+  </head>
+
+<body>
+  
+    <h1>Shopping List Check Off</h1>
+    <!--Shows list-->
+    
+    <div class="row">
+        
+      <div class="col-xs-6">
+        <h2>To Buy:</h2>
+        <div ng-controller='ToBuyController as toBuyListCtrl'>
+         
+            <ul>
+              <li ng-repeat="itemToDisplay in toBuyListCtrl.itemsToBuyList">
+                <div class="row">
+
+                  <div class="col-xs-4">
+                    {{ itemToDisplay.quantity }} of {{ itemToDisplay.name }}
+                  </div>
+               
+                  <div class="col-xs-4">
+                    <button ng-click="toBuyListCtrl.trasferItem($index);" class="btn btn-default">Bought</button>
+                  </div>
+
+                </div>
+              </li>
+            </ul>
+       
+            <div ng-if = "toBuyListCtrl.itemsToBuyList.length===0" class="emptyMessage">Everything is bought!</div>
+            
+          </div>
+      </div>
+
+
+      <!-- Already Bought List -->
+      <div class="col-xs-6">
+        <h2>Already Bought:</h2>
+
+        <div ng-controller='AlreadyBoughtController as boughtCntrlr'>
+          <ul>
+            <li ng-repeat="bItemToDisplay in boughtCntrlr.boughtItems">
+              {{ bItemToDisplay.quantity }} of {{ bItemToDisplay.name }}
+            </li>
+            <div  ng-if = "!boughtCntrlr.boughtItems.length" class="emptyMessage">Nothing bought yet.</div>
+          </ul>
+        </div>
+       </div>
+
+    </div>
+ 
+</body>
+</html>
