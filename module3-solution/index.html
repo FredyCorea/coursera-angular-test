@@ -26,8 +26,13 @@
           </div>
 
           <!-- Directive -->
-          <found-items found = "menu.found", on-remove="menu.removeItem(index)"> </found-items>
+          <found-items 
+            found = "menu.found", 
+            on-remove="menu.removeItem(index)"
+            count = menu.count> 
+          </found-items>
         
+          <div ng-if = "menu.found.length === 0" class = "error" > Nothing Found  </div> 
         </div>
         
       </div>

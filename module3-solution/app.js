@@ -13,7 +13,8 @@ function FoundItemsDirective() {
     templateUrl: 'foundItems.html',
     scope: {
       found: '<',
-      onRemove: '&'    //refrence biding
+      onRemove: '&',    //refrence biding
+      count: '='
     }
   };
 
@@ -25,7 +26,9 @@ NarrowItDownController.$inject = ['MenuSearchService','$scope'];
 function NarrowItDownController(MenuSearchService, $scope) {
   
   var menu = this;
+
   menu.found = [];
+  menu.count = 0;
 
   menu.getMatchedMenuItems  = function () {
 
@@ -51,6 +54,8 @@ function NarrowItDownController(MenuSearchService, $scope) {
 
       //7/22
       menu.found = foundItems;
+      //menu.count = foundItems.length;
+      menu.getCount();
 
     })
     .catch(function (error) {
@@ -61,7 +66,12 @@ function NarrowItDownController(MenuSearchService, $scope) {
 
   menu.removeItem = function (itemIndex) {
     this.found.splice(itemIndex,1);
+    menu.getCount();
   };
+
+  menu.getCount = function(){
+    menu.count = menu.found.length;
+  }
 
 }
 

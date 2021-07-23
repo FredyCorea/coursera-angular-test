@@ -1,4 +1,6 @@
+
 <h1>List of Found Items</h1>
+<div><h3> Count: {{count}} </h3></div>
 <ul>
     <li ng-repeat="item in found">
         <h2>{{item.name}}</h2>
@@ -7,3 +9,4 @@
         <button class="btn btn-primary" ng-click="onRemove({index: $index});">Don't want this one!</button>
     </li>
 </ul>
+
