@@ -22,8 +22,8 @@ function FoundItemsDirective() {
 }
 
 
-NarrowItDownController.$inject = ['MenuSearchService','$scope'];
-function NarrowItDownController(MenuSearchService, $scope) {
+NarrowItDownController.$inject = ['MenuSearchService','$scope','$element'];
+function NarrowItDownController(MenuSearchService, $scope, $element) {
   
   var menu = this;
 
@@ -72,6 +72,24 @@ function NarrowItDownController(MenuSearchService, $scope) {
   menu.getCount = function(){
     menu.count = menu.found.length;
   }
+
+  // 7-23
+  // watcher added to manipulate the warning message
+  menu.$postLink = function () {
+    $scope.$watch('$menu.getCount()', function (newValue, oldValue) {
+      console.log($element);
+      if (newValue === true) {
+        // Show warning
+        var warningElem = $element.find('div.error');
+        warningElem.slideDown(900);
+      }
+      else {
+        // Hide warning
+        var warningElem = $element.find('div.error');
+        warningElem.slideUp(900);
+      }
+    });
+  };
 
 }
 
