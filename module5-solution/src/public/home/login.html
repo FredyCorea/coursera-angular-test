@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+  </head>
+
+    <h2>Login</h2>
+    <form name="form" ng-submit="vm.login()" role="form">
+
+        <div class="form-group" >
+            <label for="firstname">First name</label>
+            <input type="text" name="firstname" id="firstname" class="form-control" ng-model="vm.firstname" placeholder="Enter first name" required >
+            <small id="firstname" class="form-text">Required</small>
+         </div>
+
+        <p></p>
+
+        <div class="form-group" >
+            <label for="lastname">Last name</label>
+            <input type="text" name="lastname" id="lastname" class="form-control" ng-model="vm.lastname" placeholder="Enter last name" required >
+            <small id="lastname" class="form-text">Required</small>
+         </div>
+
+        <p></p>
+
+        <div class="form-group" >
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" class="form-control" ng-model="vm.email" placeholder="Enter email" required >
+            <small id="email" class="form-text">Required</small>
+        </div>
+
+        <p></p>
+         
+        <div class="form-group" >
+            <label for="email">Phone number</label>
+            <input type="text" name="phonenumber" id="phonenumber" class="form-control" ng-model="vm.phonenumber" placeholder="Enter phone number" required >
+            <small id="phonenumber" class="form-text">Required</small>
+        </div>
+        <p></p>
+         
+        <div>
+            <label for="email">Favorite dish menu number</label>
+            <input type="text" name="menunumber" id="menunumber" class="form-control" ng-model="vm.menunumber" placeholder="Enter menu number" >
+        </div>
+
+        <p></p>
+
+        <!-- <div ng-controller="Ctrl">
+            <button ng-click="submit()">Sign Up</button>
+        </div> -->
+       
+
+        <div ng-controller="Ctrl">
+            <form ng-submit="submit()">Enter text and hit enter:
+                <input type="text" ng-model="text" name="text" />
+                <input type="submit" id="submit" value="Submit" /> 
+                <pre>list={{list}}</pre>
+            </form>
+            <button ng-click="submit()">Submit 2</button>
+        </div>
+
+
+    </form>
+
+    <script>
+        function Ctrl($scope) {
+            $scope.list = [];
+            $scope.text = 'hello';
+            $scope.submit = function () {
+                if ($scope.text) {
+                    $scope.list.push($scope.text);
+                    $scope.text = '';
+                }
+            };
+        }
+    </script>
+
+</div>
+</html>
