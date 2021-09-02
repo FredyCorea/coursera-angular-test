@@ -7,6 +7,7 @@ angular.module('public')
 /**
  * Configures the routes and views
  */
+//with new lines below
 routeConfig.$inject = ['$stateProvider'];
 function routeConfig ($stateProvider) {
   // Routes
@@ -56,6 +57,19 @@ function routeConfig ($stateProvider) {
           return MenuService.getMenuItem($stateParams.category);
         }]
       }
+    })
+    .state('public.signup', {
+      url: '/signup',
+      templateUrl: 'src/public/signup/signup.html',
+      controller: 'SignupController',
+      controllerAs: 'signupCtrl'
+    })
+    .state('public.info', {
+      url: '/info',
+      templateUrl: 'src/public/info/info.html',
+      controller: 'InfoController',
+      controllerAs: 'infoCtrl'
     });
+  
 }
 })();

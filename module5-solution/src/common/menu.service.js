@@ -9,6 +9,19 @@ MenuService.$inject = ['$http', 'ApiPath'];
 function MenuService($http, ApiPath) {
   var service = this;
 
+  //new
+  service.user ={};
+
+  service.saveUser = function(user){
+    service.user = angular.copy(user);
+    console.log(service.user);
+  }
+
+  service.getUser = function(){
+    return service.user;
+  }
+  //new
+
   service.getCategories = function () {
     return $http.get(ApiPath + '/categories.json').then(function (response) {
       return response.data;
@@ -27,17 +40,11 @@ function MenuService($http, ApiPath) {
     });
   };
 
-  //https://fredy-demo.herokuapp.com/menu_items/L16.json
-  service.getMenuItem = function (shortname) {
-    var config = {};
-    if (shortname) {
-      config.params = {'shortname': shortname};
-    }
-
-    return $http.get(ApiPath + '/menu_items.json', config).then(function (response) {
-      return response.data;
-    });
-  };
+  //new
+  service.getFavoriteDish = function(short_name) {
+    return $http.get(ApiPath + '/menu_items/' + short_name + '.json');
+  }
+  //new
 
 }
 
