@@ -2,19 +2,19 @@
     <div class="row">
         <div ng-show="infoCtrl.signedUp">
             <h1>Client information.</h1>
-            <p class="ng-binding">First name*: {{infoCtrl.vm.user.firstName}}</p>
-            <!-- <p class="ng-binding">First name: fredy</p> -->
-            <p class="ng-binding">Last name: corea</p>
-            <p class="ng-binding">Email: fc@fc.com</p>
-            <p class="ng-binding">Phone: 123456789</p>
-            <p class="ng-binding">Favorite dish: Beef with Green Pepper</p>
-            <p class="ng-binding">sliced beef sauteed with green peppers and onions in brown sauce</p>
-            <img class="img-responsive" ng-src="https://calm-crag-88327.herokuapp.com/images/L17.jpg" alt="Beef with Green Pepper" src="https://calm-crag-88327.herokuapp.com/images/L17.jpg">
-
-        </div>
+            <p>First name:  {{infoCtrl.user.firstName}} </p>
+            <p>Last name: {{infoCtrl.user.lastName}}</p>
+            <p>Email: {{infoCtrl.user.email}}</p>
+            <p>Phone: {{infoCtrl.user.phone}}</p>
+            <p>Favorite dish: {{infoCtrl.user.favoriteDishDetails.name}}</p>
+            <p>Description: {{infoCtrl.user.favoriteDishDetails.description}} </p> 
+            
+            <img class="img-responsive" ng-src="https://fredy-demo.herokuapp.com/images/{{infoCtrl.user.favoriteDishDetails.short_name}}.jpg" >
+            
+        </div>   
 
         <div ng-hide="infoCtrl.signedUp" class="ng-hide">
-            <h1>Not Signed Up Yet. <a class="btn btn-default" ui-sref="public.signup" href="#/signup">Signup now!</a></h1>
+            <h1>Not Signed Up Yet. <a class="btn btn-default" ui-sref="public.register" href="#/register">Register now!</a></h1>
         </div>
 
     </div>

@@ -9,7 +9,7 @@
   
         vm.user = MenuService.getUser();
 
-        console.log('User is', vm.user);
+        //console.log('User is', vm.user);
 
         if (angular.equals(vm.user, {})) {
             vm.signedUp = false;
